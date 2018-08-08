@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ElectoralSystem.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +9,12 @@ namespace ElectoralSystem.Controllers
 {
     public class HomeController : Controller
     {
+        private ApplicationDbContext context = new ApplicationDbContext();
+
         public ActionResult Index()
         {
-            return View();
+            var openElections = context.Elections.ToList();
+            return View(openElections);
         }
 
         public ActionResult About()

@@ -1,0 +1,44 @@
+﻿@model ElectoralSystem.Entities.Election
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>@Model.Title</h2> <span>@Model.Description</span>
+
+<div class="row">
+    <div class="col-md-6">
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.StartDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.EndDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.EndDate)
+            </dd>
+
+        </dl>
+    </div>
+    <div class="col-md-6">
+        <ul class="list-group">
+            <li class="list-group-item-heading">Election Details</li>
+            <li class="list-group-item">@Html.ActionLink("Candidates", "Index", "Candidates")</li>
+            <li class="list-group-item">@Html.ActionLink("Categories", "Index", "Categories")</li>
+            <li class="list-group-item">@Html.ActionLink("Parties", "Index", "Parties")</li>
+            <li class="list-group-item">@Html.ActionLink("Votes", "Index", "Votes")</li>
+        </ul>
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

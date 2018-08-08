@@ -1,6 +1,7 @@
 ﻿using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using ElectoralSystem.Entities;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
@@ -23,6 +24,18 @@ namespace ElectoralSystem.Models
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+        }
+
+        public DbSet<Vote> Votes { get; set; }
+        public DbSet<Voter> Voters { get; set; }
+        public DbSet<Candidate> Candidates { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Election> Elections { get; set; }
+        public DbSet<Party> Parties { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
         }
 
         public static ApplicationDbContext Create()
